@@ -387,6 +387,142 @@
         @media (max-width: 768px) { .nav-center { display: none; } .nav { padding: 0 20px; height: 64px; } h1 { font-size: 42px; margin-bottom: 20px; } .hero-content { padding: 0 20px; } .market-strip { grid-template-columns: 1fr; } .btn-container { flex-direction: column; width: 100%; } .btn-primary, .btn-secondary { width: 100%; } .pipeline-wrapper { margin: 0 -20px; width: calc(100% + 40px); border-radius: 0; border-left: 0; border-right: 0; } }
         
         .tech-diagram { position: relative; width: 220px; height: 220px; display: flex; justify-content: center; align-items: center; }
+    
+        @media (max-width: 1024px) { 
+            .grid-2col { grid-template-columns: 1fr; gap: 60px; } 
+            .corporate-summary { grid-template-columns: 1fr; gap: 40px; } 
+            .footer-grid { grid-template-columns: 1fr 1fr; } 
+            .summary-stats { grid-template-columns: 1fr 1fr; gap: 16px; }
+            .partner-stages { grid-template-columns: 1fr; gap: 16px; }
+            .chart-container { padding: 40px 30px; }
+            .chart-header { flex-direction: column; align-items: flex-start; gap: 20px; }
+        }
+        
+        @media (max-width: 768px) { 
+            /* Container adjustments */
+            .container { width: 90vw; margin-left: 5vw; margin-right: 5vw; padding: 0 20px; }
+            
+            /* Navigation */
+            .nav-wrapper { top: 12px; padding: 0 16px; }
+            .nav { padding: 0 16px; height: 60px; }
+            .nav-center { display: none; } 
+            .logo { font-size: 18px; }
+            .logo-mark { width: 20px; height: 20px; }
+            .persona-pill { display: none; }
+            .cta-header { padding: 8px 16px; font-size: 12px; }
+            
+            /* Hero */
+            .hero-section { min-height: 80vh; padding-top: 100px; padding-bottom: 40px; }
+            h1 { font-size: 36px; margin-bottom: 20px; line-height: 1.2; } 
+            .hero-content { padding: 0 20px; }
+            .p-lead { font-size: 16px; margin-bottom: 24px; }
+            .positioning-statement { font-size: 16px; padding: 12px 16px; }
+            .stat-badge { font-size: 11px; padding: 6px 12px; margin-bottom: 24px; }
+            
+            /* Buttons */
+            .btn-container { flex-direction: column; width: 100%; gap: 12px; margin-top: 32px; } 
+            .btn-primary, .btn-secondary { width: 100%; padding: 14px 28px; font-size: 14px; text-align: center; }
+            
+            /* Investor strip */
+            .investor-strip { padding: 16px 0; margin-bottom: 60px; }
+            .investor-strip-inner { gap: 80px; }
+            .inv-logo { font-size: 16px; }
+            .inv-logo-img, .logo-white { height: 18px !important; }
+            
+            /* Corporate summary */
+            .corporate-summary { grid-template-columns: 1fr; gap: 30px; margin-bottom: 60px; }
+            .summary-stats { grid-template-columns: 1fr 1fr; gap: 12px; }
+            .ss-val { font-size: 20px; }
+            .validation-callout { padding: 12px 16px; font-size: 14px; }
+            
+            /* Market stats */
+            .stats-wrapper { margin-bottom: 80px; }
+            .market-strip { grid-template-columns: 1fr; gap: 0; } 
+            .market-cell { padding: 32px 24px; }
+            .m-stat { font-size: 28px; }
+            .m-desc { font-size: 13px; }
+            
+            /* Section spacing */
+            .section-spacer { padding: 60px 0; }
+            
+            /* Typography */
+            h2 { font-size: 28px; margin-bottom: 20px; }
+            h2::before { width: 3px; height: 24px; }
+            h3 { font-size: 18px; }
+            .eyebrow { font-size: 11px; margin-bottom: 12px; }
+            
+            /* Tabs */
+            .tab-nav { flex-wrap: wrap; width: 100%; margin-bottom: 30px; }
+            .tab-btn { padding: 10px 16px; font-size: 13px; flex: 1; min-width: fit-content; }
+            
+            /* Cards */
+            .glass-card { border-radius: 12px; }
+            .science-card { padding: 24px; }
+            .data-grid-mini { grid-template-columns: 1fr; gap: 12px; padding-top: 20px; }
+            .schematic-box { min-height: 300px; }
+            .mech-label { font-size: 11px; padding: 8px 16px; }
+            
+            /* Pipeline */
+            .pipeline-wrapper { margin: 0 -20px; width: calc(100% + 40px); border-radius: 0; border-left: 0; border-right: 0; overflow-x: auto; }
+            .pipeline-table { min-width: 700px; font-size: 13px; }
+            .pipeline-table th { padding: 16px 12px; font-size: 11px; }
+            .pipeline-table td { padding: 16px 12px; }
+            .prog-name { font-size: 14px; }
+            .prog-detail { font-size: 14px; }
+            .status-pill { font-size: 10px; padding: 3px 8px; }
+            .strategy-box { padding: 16px; margin-top: 20px; }
+            
+            /* Chart */
+            .chart-container { padding: 24px 20px; }
+            .chart-header { flex-direction: column; align-items: flex-start; gap: 16px; margin-bottom: 30px; }
+            .bar-group { margin-bottom: 24px; }
+            .bar-labels { font-size: 13px; margin-bottom: 10px; }
+            .bar-track { height: 36px; }
+            .bar-val { font-size: 12px; padding-right: 12px; }
+            
+            /* Business model */
+            .deal-bullets { margin-top: 16px; }
+            .deal-bullets li { font-size: 14px; margin-bottom: 12px; padding-left: 20px; }
+            .partner-stages { grid-template-columns: 1fr; gap: 12px; margin-top: 24px; }
+            .p-stage-card { padding: 16px; }
+            .p-stage-title { font-size: 12px; }
+            
+            /* Team */
+            .team-grid { grid-template-columns: 1fr; gap: 24px; margin-top: 30px; }
+            .team-card { border-radius: 12px; }
+            .team-img-wrapper { height: 280px; }
+            .team-content { padding: 20px 24px 24px 24px; margin-top: -16px; }
+            .team-name { font-size: 18px; }
+            .team-bio { font-size: 13px; }
+            
+            /* Investor card */
+            .investor-access-card { padding: 24px; margin-bottom: 40px; }
+            .investor-access-card .deal-bullets { grid-template-columns: 1fr; gap: 0; }
+            .investor-access-card > div[style*="flex"] { flex-direction: column; align-items: flex-start; gap: 16px; }
+            .investor-access-card .btn-primary { width: 100%; }
+            
+            /* News carousel */
+            .news-card-innovative { padding: 32px 24px; min-height: auto; }
+            .news-meta { font-size: 11px; margin-bottom: 16px; flex-wrap: wrap; }
+            .news-headline { font-size: 24px; margin-bottom: 16px; }
+            .news-excerpt { font-size: 16px; margin-bottom: 24px; }
+            .carousel-dots { margin-top: 30px; gap: 10px; }
+            .news-card-innovative > div[style*="absolute"] { position: relative !important; bottom: auto !important; right: auto !important; margin-top: 20px; text-align: center; }
+            
+            /* Footer */
+            footer { padding: 60px 0 30px 0; margin-top: 60px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 40px; margin-bottom: 40px; }
+            .footer-brand p { max-width: 100%; }
+            .footer-bottom { flex-direction: column; gap: 20px; padding-top: 30px; align-items: flex-start; }
+            .footer-legal { flex-direction: column; gap: 12px; }
+            
+            /* Modal */
+            .modal-card { max-width: 90vw; padding: 28px 24px; margin: 0 16px; }
+            .close-modal { top: 16px; right: 16px; font-size: 28px; }
+            .form-group { margin-bottom: 16px; }
+            .form-input { padding: 10px; font-size: 15px; }
+        }
+    
     </style>
 </head>
 <body>
@@ -575,6 +711,23 @@
                                 </td>
                                 <td>
                                     <span class="status-pill status-discovery">Lead Optimisation</span>
+                                </td>
+                                <td>
+                                    <div class="prog-detail">Wholly Owned</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="prog-name">DI-101 (ASO)</div>
+                                </td>
+                                <td>
+                                    <div class="prog-detail">TfR-Oligonucleotide</div>
+                                </td>
+                                <td>
+                                    <div class="prog-detail">MAPT / Tauopathy</div>
+                                </td>
+                                <td>
+                                    <span class="status-pill status-discovery">Discovery</span>
                                 </td>
                                 <td>
                                     <div class="prog-detail">Wholly Owned</div>
