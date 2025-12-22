@@ -183,25 +183,74 @@
          */
         .investor-strip { width: 100vw; background: #020408;   margin-top: -30px;   /* pulls it up toward the hero */
             margin-bottom: 40px; /* less gap below */ border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); padding: 12px 0; overflow: hidden; white-space: nowrap; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; margin-bottom: 80px; display: flex; align-items: center; justify-content: center; }
-        .investor-strip-inner { display: flex; align-items: center; gap: 190px; animation: drift 40s linear infinite; }
-        .inv-logo { font-family: 'Inter', sans-serif; font-weight: 700; color: #475569; font-size: 20px; text-transform: uppercase; letter-spacing: -0.02em; transition: color 0.3s; }
-        .inv-logo:hover { color: white; }
-        
-        .inv-logo-img {
-            height: 22px; /* Scales relative to font size (approx 1.2x text height for visual balance) */
-            width: auto;   /* Maintains aspect ratio */
-            margin: 0 10px; /* Adds breathing room like text spacing */
-            vertical-align: middle; /* Aligns center of image with center of text line */
-            
-            /* Filter logic for white logos */
-            filter: grayscale(1) invert(1);
-            mix-blend-mode: screen;
-            opacity: 0.7;
-            transition: opacity 0.3s ease;
-        }
-        .inv-logo-img:hover { opacity: 1; } 
-        
-        @keyframes drift { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+       /* 1. THE STRIP CONTAINER */
+ /* * ====================================================================================
+ * INVESTOR STRIP (Elite Final)
+ * ====================================================================================
+ */
+.investor-strip { 
+    width: 100vw; 
+    background: #020408; 
+    margin-top: -30px; 
+    margin-bottom: 40px; 
+    border-top: 1px solid var(--glass-border); 
+    border-bottom: 1px solid var(--glass-border); 
+    padding: 12px 0; 
+    overflow: hidden; 
+    position: relative; 
+    left: 50%; 
+    right: 50%; 
+    margin-left: -50vw; 
+    margin-right: -50vw; 
+    display: flex; 
+    align-items: center; 
+}
+
+/* THE CONTAINER */
+.investor-strip-inner { 
+    display: flex; 
+    align-items: center; 
+    width: max-content; 
+    gap: 0; /* Reset gap. We use margins. */
+    
+    /* ANIMATION */
+    animation: drift 60s linear infinite; 
+    will-change: transform;
+    transform: translate3d(0, 0, 0); 
+}
+
+/* THE LOGOS */
+.investor-strip-inner img {
+    /* SIZE: Auto width for perfect optical spacing */
+    width: auto !important; 
+    height: 30px !important; 
+    
+    /* LOADING STABILITY */
+    min-width: 50px; 
+    
+    /* SPACING: 150px (1.5x the previous 100px) */
+    margin-right: 150px !important;
+    margin-left: 0 !important;
+    
+    /* COLOR: Makes them pure white */
+    filter: brightness(0) invert(1) !important;
+    opacity: 0.8; /* Slight transparency for elegance */
+    transition: opacity 0.3s ease;
+    
+    /* LAYOUT */
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.investor-strip-inner img:hover { 
+    opacity: 1; 
+}
+
+/* THE LOOP */
+@keyframes drift { 
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } 
+}
 
         /* * ====================================================================================
          * CORPORATE SUMMARY
@@ -596,17 +645,17 @@
 
     <div class="investor-strip" font="inter" id="investor-strip">
         <div class="investor-strip-inner" font="inter">
-            <img src="accel.svg" alt="Accel" class="logo-white" style="height:30px; width:auto;">
-            <img src="GV.svg" alt="GV" class="logo-white" style="height:30px; width:auto;">
-            <img src="arch-min.png" alt="Arch" class="logo-white" style="height:30px; width:auto;">
-            <img src="thrive.svg" alt="Thrive" class="logo-white" style="height:30px; width:auto;">
-            <img src="antler.svg" alt="Antler" class="logo-white" style="height:30px; width:auto;">
+            <img src="accel.svg" loading="eager" alt="Accel" class="logo-white" style="height:30px; width:auto;">
+            <img src="GV.svg" loading="eager" alt="GV" class="logo-white" style="height:30px; width:auto;">
+            <img src="arch-min.png" loading="eager" alt="Arch" class="logo-white" style="height:30px; width:auto;">
+            <img src="thrive.svg" loading="eager" alt="Thrive" class="logo-white" style="height:30px; width:auto;">
+            <img src="antler.svg" loading="eager" alt="Antler" class="logo-white" style="height:30px; width:auto;">
 
-            <img src="accel.svg" alt="Accel" class="logo-white" style="height:30px; width:auto;">
-            <img src="GV.svg" alt="GV" class="logo-white" style="height:30px; width:auto;">
-            <img src="arch-min.png" alt="Arch" class="logo-white" style="height:30px; width:auto;">
-            <img src="thrive.svg" alt="Thrive" class="logo-white" style="height:30px; width:auto;">
-            <img src="antler.svg" alt="Antler" class="logo-white" style="height:30px; width:auto;">
+            <img src="accel.svg" loading="eager" alt="Accel" class="logo-white" style="height:30px; width:auto;">
+            <img src="GV.svg" loading="eager" alt="GV" class="logo-white" style="height:30px; width:auto;">
+            <img src="arch-min.png" loading="eager" alt="Arch" class="logo-white" style="height:30px; width:auto;">
+            <img src="thrive.svg" loading="eager" alt="Thrive" class="logo-white" style="height:30px; width:auto;">
+            <img src="antler.svg" loading="eager"alt="Antler" class="logo-white" style="height:30px; width:auto;">
         </div>
     </div>
 
@@ -700,23 +749,7 @@
                                     <div class="prog-detail">Wholly Owned</div>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>
-                                    <div class="prog-name">DI-002</div>
-                                </td>
-                                <td>
-                                    <div class="prog-detail">TfR-Enzyme Fusion</div>
-                                </td>
-                                <td>
-                                    <div class="prog-detail">GBA1 / Parkinson's</div>
-                                </td>
-                                <td>
-                                    <span class="status-pill status-discovery">Lead Optimisation</span>
-                                </td>
-                                <td>
-                                    <div class="prog-detail">Wholly Owned</div>
-                                </td>
-                            </tr>
+                            
                             <tr>
                                 <td>
                                     <div class="prog-name">DI-101 (ASO)</div>
@@ -1132,6 +1165,19 @@ United Kingdom
             document.getElementById(`news-${index}`).classList.add('active');
             document.querySelectorAll('.dot')[index-1].classList.add('active');
         }
+    </script>
+    <script>
+        // CONTINUOUS LOOP FIX
+        // This duplicates the logos so there is never "blank space"
+        document.addEventListener("DOMContentLoaded", function() {
+            const strip = document.querySelector('.investor-strip-inner');
+            if (strip) {
+                // Clone the entire list of logos and append them to the end.
+                // This creates [Set 1] [Set 2], allowing the animation 
+                // to loop perfectly from the end of Set 1 back to the start.
+                strip.innerHTML += strip.innerHTML;
+            }
+        });
     </script>
 </body>
 </html>
