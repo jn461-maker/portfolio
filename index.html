@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joseph Nogbou | Web Designer Passionate About Healthcare Innovation</title>
-    <meta name="description" content="Cambridge-based web designer specialising in the healthcare space. Creating stunning digital experiences for health-tech startups and medical practices.">
+    <title>Joseph Nogbou | Medical Web Design Specialist</title>
+    <meta name="description" content="Elite websites for private practices. Designed by a Cambridge medical student. Turn visitors into patients.">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;600;700;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
         
+        /* --- RESET & VARIABLES --- */
         * {
             margin: 0;
             padding: 0;
@@ -16,38 +17,97 @@
         
         :root {
             --navy: #0A2463;
-            --cambridge-blue: #1E88E5;
+            --navy-dark: #020B1C;
+            --navy-card: #0F2A60;
             --gold: #D4AF37;
+            --gold-light: #F4E5B0;
             --white: #FFFFFF;
-            --cream: #F8F9FA;
+            --cream: #F5F5F7;
             --text-dark: #1A1A2E;
-            --text-light: #6B7280;
+            --text-on-dark: #E2E8F0;
+            --border-on-dark: rgba(255, 255, 255, 0.1);
         }
         
+        html { scroll-behavior: smooth; }
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             color: var(--text-dark);
             overflow-x: hidden;
-            background: var(--white);
+            background: var(--navy-dark);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
         }
         
-        /* Animated Background */
+        /* --- TYPOGRAPHY --- */
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--navy-dark);
+        }
+
+        .section-heading {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+
+        .section-subheading {
+            font-size: 0.85rem;
+            color: var(--gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 1.5rem;
+            display: block;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .body-text {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-size: 1.125rem;
+            max-width: 70ch;
+            font-weight: 300;
+        }
+
+        .body-text-center {
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        strong { font-weight: 600; }
+
+        /* --- UTILITIES --- */
+        .content-section { padding: 8rem 2rem; position: relative; }
+        .light-mode { background: var(--white); }
+        .alt-bg { background: var(--cream); }
+        
+        /* Dark Mode Classes */
+        .dark-mode {
+            background-color: var(--navy-dark);
+            color: var(--white);
+        }
+        .dark-mode h1, .dark-mode h2, .dark-mode h3 { color: var(--white); }
+        .dark-mode .body-text { color: var(--text-on-dark); }
+        .dark-mode strong { color: var(--white); }
+
+        /* Container */
+        .container { max-width: 1200px; margin: 0 auto; }
+        .container-narrow { max-width: 800px; margin: 0 auto; }
+        .text-center { text-align: center; }
+
+        /* --- ANIMATED BACKGROUND (Mobile Fixed) --- */
         .animated-bg {
-            position: fixed;
+            position: fixed; /* Fixed prevents mobile scroll issues */
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: -1;
-            background: linear-gradient(135deg, #0A2463 0%, #1E88E5 50%, #0A2463 100%);
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
-        }
-        
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            background: linear-gradient(135deg, #05153F 0%, #0A2463 100%);
         }
         
         .animated-bg::before {
@@ -57,35 +117,11 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 50%, rgba(30, 136, 229, 0.1) 0%, transparent 50%);
+            background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.15) 0%, transparent 60%);
             animation: pulse 8s ease-in-out infinite;
         }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
-        }
-        
-        /* Floating Particles */
-        .particle {
-            position: fixed;
-            width: 4px;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 50%;
-            pointer-events: none;
-            animation: float 20s infinite;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-100vh) translateX(50px); opacity: 0; }
-        }
-        
-        /* Hero Section */
+
+        /* --- HERO SECTION (Refined for Symmetry) --- */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -93,584 +129,872 @@
             justify-content: center;
             position: relative;
             padding: 2rem;
+            /* Flexbox logic ensures vertical centering */
         }
         
         .hero-content {
-            max-width: 1200px;
+            max-width: 900px;
             width: 100%;
             text-align: center;
             position: relative;
             z-index: 10;
+            /* Pulling content together */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
         
         .name-reveal {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(3rem, 8vw, 7rem);
-            font-weight: 900;
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            font-weight: 700;
             color: var(--white);
-            margin-bottom: 1rem;
-            line-height: 1.1;
+            margin-bottom: 1rem; /* Tighter spacing */
+            line-height: 1.05;
             opacity: 0;
-            animation: revealName 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-        }
-        
-        @keyframes revealName {
-            0% {
-                opacity: 0;
-                transform: translateY(50px);
-                filter: blur(10px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-                filter: blur(0);
-            }
+            animation: revealName 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            letter-spacing: -0.03em;
         }
         
         .tagline {
-            font-size: clamp(1.2rem, 3vw, 2rem);
-            color: rgba(255, 255, 255, 0.95);
-            margin-bottom: 1rem;
+            /* Smaller text as requested */
+            font-size: clamp(0.95rem, 1.5vw, 1.1rem); 
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem; /* Reduced margin to pull buttons up */
             font-weight: 300;
-            letter-spacing: 0.5px;
-            opacity: 0;
-            animation: fadeInUp 1s ease-out 0.5s forwards;
-        }
-        
-        .subtitle {
-            font-size: clamp(1rem, 2vw, 1.3rem);
-            color: rgba(255, 255, 255, 0.85);
-            max-width: 700px;
-            margin: 0 auto 3rem;
+            max-width: 650px;
             line-height: 1.6;
             opacity: 0;
-            animation: fadeInUp 1s ease-out 1s forwards;
+            animation: fadeInUp 1s ease-out 0.4s forwards;
         }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .cta-group {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            opacity: 0;
-            animation: fadeInUp 1s ease-out 1.5s forwards;
-        }
-        
-        .cta-btn {
-            padding: 1.2rem 2.5rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-            text-decoration: none;
-            border-radius: 12px;
-            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-            position: relative;
-            overflow: hidden;
+
+        .capacity-badge {
             display: inline-block;
-        }
-        
-        .cta-primary {
-            background: var(--gold);
-            color: var(--navy);
-            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.3);
-        }
-        
-        .cta-primary::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-        
-        .cta-primary:hover::before {
-            width: 300px;
-            height: 300px;
-        }
-        
-        .cta-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 50px rgba(212, 175, 55, 0.4);
-        }
-        
-        .cta-secondary {
-            background: rgba(255, 255, 255, 0.1);
             color: var(--white);
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.6s forwards;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
         }
-        
-        .cta-secondary:hover {
-            background: rgba(255, 255, 255, 0.2);
-            border-color: rgba(255, 255, 255, 0.5);
-            transform: translateY(-3px);
-        }
-        
-        .scroll-indicator {
-            position: absolute;
-            bottom: 3rem;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 30px;
-            height: 50px;
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            border-radius: 25px;
-            cursor: pointer;
+
+        .hero-btns {
             opacity: 0;
-            animation: fadeIn 1s ease-out 2s forwards;
+            animation: fadeInUp 1s ease-out 0.8s forwards;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        @keyframes revealName {
+            0% { opacity: 0; transform: translateY(40px); filter: blur(10px); }
+            100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- BUTTONS --- */
+        .btn {
+            padding: 1rem 2rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            cursor: pointer;
+            letter-spacing: 0.02em;
         }
         
-        @keyframes fadeIn {
-            to { opacity: 1; }
+        .btn-primary {
+            background: var(--gold);
+            color: var(--navy-dark);
+            border: 1px solid var(--gold);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
         }
         
-        .scroll-indicator::before {
-            content: '';
+        .btn-primary:hover {
+            background: #E5C150;
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--white);
+        }
+
+        /* -------------------------------------------------------------------------- */
+        /* [SMARTPHONE FIX] STICKY BUTTON LOGIC - DISMISSIBLE                         */
+        /* -------------------------------------------------------------------------- */
+        .sticky-wrapper {
+            position: fixed;
+            bottom: max(30px, env(safe-area-inset-bottom) + 20px);
+            right: 25px;
+            z-index: 9999;
+            /* DEFAULT HIDDEN */
+            opacity: 0;
+            transform: scale(0.8) translateY(20px);
+            pointer-events: none;
+            transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .sticky-wrapper.is-visible {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+            pointer-events: auto;
+        }
+
+        .sticky-email-btn {
+            width: 56px;
+            height: 56px;
+            background: var(--gold);
+            color: var(--navy-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
+            transition: transform 0.2s ease;
+        }
+
+        .sticky-email-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--navy-dark);
+        }
+
+        /* Close Button 'x' */
+        .sticky-close {
             position: absolute;
-            top: 8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 4px;
-            height: 10px;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 2px;
-            animation: scrollDot 2s ease-in-out infinite;
+            top: -5px;
+            right: -5px;
+            background: var(--navy-dark);
+            color: var(--white);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            font-size: 14px;
+            line-height: 1;
+            border: 1px solid rgba(255,255,255,0.2);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        /* DESKTOP ONLY: Hover Tooltip */
+        @media (hover: hover) {
+            .sticky-wrapper::before {
+                content: 'Email Me';
+                position: absolute;
+                right: 70px;
+                top: 50%;
+                transform: translateY(-50%) translateX(10px);
+                background: var(--white);
+                color: var(--navy-dark);
+                padding: 0.5rem 0.9rem;
+                border-radius: 4px;
+                font-size: 0.85rem;
+                font-weight: 700;
+                opacity: 0;
+                transition: all 0.2s ease;
+                pointer-events: none;
+                white-space: nowrap;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            }
+
+            .sticky-wrapper:hover::before {
+                opacity: 1;
+                transform: translateY(-50%) translateX(0);
+            }
+            
+            .sticky-email-btn:hover {
+                transform: scale(1.1);
+            }
+        }
+
+        /* --- LISTS --- */
+        .luxury-list {
+            list-style: none;
+            margin: 3rem 0;
+        }
+
+        .luxury-list li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+            font-size: 1.15rem;
+            line-height: 1.6;
         }
         
-        @keyframes scrollDot {
-            0%, 100% { transform: translateX(-50%) translateY(0); opacity: 1; }
-            50% { transform: translateX(-50%) translateY(15px); opacity: 0.3; }
+        .dark-mode .luxury-list li { color: var(--text-on-dark); }
+        .light-mode .luxury-list li { color: var(--text-light); }
+
+        .luxury-list li .dot {
+            min-width: 6px;
+            height: 6px;
+            background-color: var(--gold);
+            border-radius: 50%;
+            margin-top: 12px;
+            margin-right: 25px;
+            flex-shrink: 0;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        /* --- TESTIMONIAL --- */
+        .testimonial-block {
+            border-left: 2px solid var(--gold);
+            padding: 0 0 0 2rem;
+            margin: 3rem 0;
         }
         
-        /* Portfolio Section */
-        .portfolio-section {
-            background: var(--cream);
-            padding: 8rem 2rem;
-            position: relative;
-        }
-        
-        .section-header {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 5rem;
-        }
-        
-        .section-title {
+        .testimonial-text {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            color: var(--navy);
-            margin-bottom: 1rem;
-            font-weight: 800;
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--navy-dark);
+            line-height: 1.6;
         }
-        
-        .section-subtitle {
-            font-size: 1.2rem;
-            color: var(--text-light);
-            line-height: 1.7;
-        }
-        
+
+        /* --- PORTFOLIO (DARK THEME) --- */
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2.5rem;
-            max-width: 1400px;
-            margin: 0 auto;
+            gap: 2rem;
+            margin-top: 5rem;
         }
-        
+
         .portfolio-card {
-            background: var(--white);
-            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-            transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-            position: relative;
+            transition: transform 0.4s ease, border-color 0.4s ease;
             text-decoration: none;
-            display: block;
-        }
-        
-        .portfolio-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
+            display: flex;
+            flex-direction: column;
             height: 100%;
-            background: linear-gradient(135deg, var(--cambridge-blue), var(--navy));
-            opacity: 0;
-            transition: opacity 0.5s;
-            z-index: 1;
         }
-        
-        .portfolio-card:hover::before {
-            opacity: 0.1;
-        }
-        
+
         .portfolio-card:hover {
-            transform: translateY(-15px) scale(1.02);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            transform: translateY(-10px);
+            border-color: var(--gold);
+            background: rgba(255, 255, 255, 0.05);
         }
-        
+
         .card-image {
-            width: 100%;
-            height: 250px;
-            background: linear-gradient(135deg, #1E88E5, #0A2463);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .card-image::after {
-            content: '→';
+    height: 240px;
+    background: #111;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* optional: constrain inner visual size */
+.card-image-inner {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem; /* for emoji */
+}
+
+        .start-badge {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            font-size: 4rem;
-            color: white;
-            transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        
-        .portfolio-card:hover .card-image::after {
-            transform: translate(-50%, -50%) scale(1);
-        }
-        
-        .card-icon {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 5rem;
-            opacity: 0.3;
-            transition: all 0.5s;
-        }
-        
-        .portfolio-card:hover .card-icon {
-            opacity: 0;
-            transform: translate(-50%, -50%) scale(1.5);
-        }
-        
-        .card-content {
-            padding: 2rem;
-            position: relative;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: var(--gold);
+            color: var(--navy-dark);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
             z-index: 2;
+            letter-spacing: 0.05em;
+        }
+
+        .card-content {
+            padding: 3rem 2.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-category {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 1rem;
         }
         
         .card-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            color: var(--navy);
-            margin-bottom: 0.5rem;
-            font-weight: 700;
-        }
-        
-        .card-tagline {
-            color: var(--text-light);
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-        
-        .card-category {
-            display: inline-block;
-            background: rgba(30, 136, 229, 0.1);
-            color: var(--cambridge-blue);
-            padding: 0.4rem 1rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-top: 1rem;
-        }
-        
-        /* Footer */
-        .footer {
-            background: var(--navy);
-            padding: 4rem 2rem;
-            color: var(--white);
-            text-align: center;
-        }
-        
-        .footer-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .cambridge-badge {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 2rem;
-            background: rgba(212, 175, 55, 0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            border: 3px solid var(--gold);
-        }
-        
-        .footer-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-        
-        .footer-email {
-            color: var(--gold);
-            text-decoration: none;
-            font-size: 1.3rem;
-            font-weight: 600;
-            transition: all 0.3s;
-            display: inline-block;
-            margin: 1.5rem 0;
-        }
-        
-        .footer-email:hover {
-            transform: translateY(-2px);
-            text-shadow: 0 5px 20px rgba(212, 175, 55, 0.5);
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 2rem;
-            justify-content: center;
-            margin-top: 2rem;
-        }
-        
-        .social-link {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            color: var(--white);
             font-size: 1.5rem;
-            transition: all 0.4s;
+            margin-bottom: 1rem;
+            color: var(--white);
         }
         
-        .social-link:hover {
-            background: var(--gold);
-            color: var(--navy);
-            transform: translateY(-5px) rotate(10deg);
+        .card-desc {
+            color: var(--text-on-dark);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
         }
-        
-        .footer-note {
-            margin-top: 3rem;
+
+        .strategy-note {
             font-size: 0.9rem;
             color: rgba(255, 255, 255, 0.6);
             line-height: 1.6;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1.5rem;
+            margin-top: auto;
+        }
+
+        .strategy-label {
+            display: block;
+            color: var(--white);
+            font-weight: 500;
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* --- PRICING --- */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 8px;
+            padding: 3rem 2.5rem;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.08);
+            transform: scale(1.02);
+            z-index: 2;
+            border-top: 4px solid var(--gold);
         }
         
+        .tier-tagline {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--gold);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .tier-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            color: var(--navy-dark);
+            margin-bottom: 0.2rem;
+        }
+
+        .tier-price {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* New Outcome Line Style */
+        .tier-outcome {
+            font-size: 0.9rem;
+            color: var(--navy);
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            line-height: 1.4;
+        }
+
+        .tier-desc {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+
+        .tier-features {
+            list-style: none;
+            margin-bottom: 2.5rem;
+            flex-grow: 1;
+        }
+
+        .tier-features li {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+        }
+
+        .tier-features li::before {
+            content: '✓';
+            color: var(--gold);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .best-for {
+            background: var(--cream);
+            padding: 1.5rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+        }
+        
+        /* --- MID PAGE CTA --- */
+        .mid-page-cta {
+            margin-top: 4rem;
+            background: rgba(10, 36, 99, 0.03);
+            /* border-left: 3px solid var(--navy);  <-- REMOVED THIS */
+            padding: 2rem;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        /* --- PROCESS --- */
+        .process-row {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 4rem;
+            gap: 3rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding-bottom: 4rem;
+        }
+        
+        .process-row:last-child {
+          border-bottom: none;
+          margin-bottom: 0;
+          padding-bottom: 2rem;
+        }
+        
+        .process-num {
+          font-family: 'Playfair Display', serif;
+          font-size: 4rem;
+          color: transparent;
+          -webkit-text-stroke: 1px rgba(255, 255, 255, 0.8);
+          line-height: 1;
+          font-weight: 700;
+          flex-shrink: 0;
+          margin-top: 0;
+          width: 100px;
+        }
+        .process-row > div:last-child {
+          padding-top: 0.5rem;
+        }
+
+        /* --- FOOTER --- */
+        .footer {
+            background: var(--navy-dark);
+            color: var(--white);
+            padding: 6rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
         /* Responsive */
-        @media (max-width: 768px) {
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            .hero {
-                padding: 2rem 1rem;
-            }
-            
-            .cta-group {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .cta-btn {
-                width: 100%;
-                max-width: 300px;
-            }
-            
-            .portfolio-section {
-                padding: 5rem 1rem;
-            }
+        @media (max-width: 900px) {
+            .pricing-card.featured { transform: none; }
+            .content-section { padding: 5rem 1.5rem; }
+            .hero-btns { flex-direction: column; align-items: center; }
+            .hero-btns .btn { width: 100%; max-width: 400px; text-align: center; }
         }
-        
-        /* Glassmorphism effect */
-        .glass {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        @media (max-width: 768px) {
+            .section-heading { font-size: 2.5rem; }
+            .process-row { flex-direction: column; gap: 1rem; }
+            .process-num { font-size: 3rem; margin-top: 0; }
         }
     </style>
 </head>
 <body>
-    <!-- Animated Background -->
+
+    <div class="sticky-wrapper" id="stickyWrapper">
+        <a href="mailto:jn461@cam.ac.uk" class="sticky-email-btn">
+            <svg viewBox="0 0 24 24">
+                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+            </svg>
+        </a>
+        <button class="sticky-close" onclick="document.getElementById('stickyWrapper').style.display='none'" aria-label="Close">×</button>
+    </div>
+
     <div class="animated-bg"></div>
-    
-    <!-- Floating Particles -->
-    <div class="particles-container"></div>
-    
-    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1 class="name-reveal">Joseph Nogbou</h1>
-            <p class="tagline">Cambridge-based Web Designer.</p>
-            <p class="subtitle">Helping healthcare entrepreneurs realise their vision online.</p>
+            <h1 class="name-reveal">Turn Visitors Into Patients.</h1>
             
-            <div class="cta-group">
-                <a href="mailto:jn461@cam.ac.uk" class="cta-btn cta-primary">
-                    <span style="position: relative; z-index: 1;">Contact Joseph</span>
-                </a>
-                <a href="#portfolio" class="cta-btn cta-secondary">See My Work</a>
+            <p class="tagline">Elite websites for private medical practices. Designed by a Cambridge student doctor who understands clinical workflows, private patients, and UK regulation.</p>
+            
+            <div class="capacity-badge">2 Openings Left for January</div>
+            
+            <div class="hero-btns">
+                <a href="mailto:jn461@cam.ac.uk?subject=Website%20Audit%20Request" class="btn btn-primary">Request Website Audit</a>
+                <a href="#portfolio" class="btn btn-outline">View Portfolio & Case Studies</a>
+            </div>
+            
+            <p style="font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-top: 1.5rem; animation: fadeInUp 1s ease-out 1s forwards; opacity: 0;">
+            </p>
+        </div>
+    </section>
+
+    <section class="content-section dark-mode">
+        <div class="container-narrow">
+            <span class="section-subheading">The Problem</span>
+            <h2 class="section-heading">Your Website Is Losing Patients (and Money).</h2>
+            <p class="body-text">Even excellent clinicians lose patients before they ever pick up the phone. Patients decide in seconds.</p>
+            
+            <ul class="luxury-list">
+                <li>
+                    <div class="dot"></div>
+                    <span><strong>Slow or unreliable sites</strong> → high bounce rates, lost patients on the move.</span>
+                </li>
+                <li>
+                    <div class="dot"></div>
+                    <span><strong>Confusing navigation</strong> → key services, fees, and booking buttons get buried.</span>
+                </li>
+                <li>
+                    <div class="dot"></div>
+                    <span><strong>No simple mobile pathway</strong> → patients give up trying to book or enquire.</span>
+                </li>
+                <li>
+                    <div class="dot"></div>
+                    <span><strong>Outdated design</strong> → undermines trust and perceived quality of your care.</span>
+                </li>
+            </ul>
+
+            <p class="body-text" style="font-weight: 500; color: var(--gold); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; display: inline-block;">
+                Every month, this friction costs you dozens of potential patients - and thousands in lost revenue.
+            </p>
+        </div>
+    </section>
+
+    <section class="content-section light-mode">
+        <div class="container-narrow">
+            <span class="section-subheading">The Solution</span>
+            <h2 class="section-heading">Websites That Convert Like a Clinic, Not a Brochure.</h2>
+            <p class="body-text">I bridge medical expertise and digital design to create one measurable outcome: <strong>more of the right patients find you, understand your services, and book.</strong></p>
+            
+            <ul class="luxury-list">
+                <li>
+                    <div class="dot"></div>
+                    <span><strong>Clear patient journeys</strong> with navigation structured so patients instantly see who you are and how to book.</span>
+                </li>
+                <li>
+                    <div class="dot"></div>
+                    <span><strong>Integrated booking</strong> with simple, reliable systems on any device, with minimal admin effort.</span>
+                </li>
+                <li>
+                    <div class="dot"></div>
+                    <span><strong>Compliance and trust</strong> with GDPR-ready forms, clear consent, and layouts that reflect medical standards.</span>
+                </li>
+            </ul>
+            
+            <div class="testimonial-block">
+                <p class="testimonial-text">"The summary of salient points, expressed in language to attract the right audience without baffling them with the science, was amazing."</p>
             </div>
         </div>
-        
-        <div class="scroll-indicator"></div>
     </section>
-    
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio-section">
-        <div class="section-header">
-            <h2 class="section-title">Healthcare Innovation Portfolio</h2>
-            <p class="section-subtitle">Explore a series of imaginative, professionally designed sample websites for health-tech startups, medical practices, and wellness brands. These are not real client projects, and are specially crafted to highlight the quality and style of my web design work.</p>
-        </div>
+
+    <section id="portfolio" class="content-section dark-mode">
+        <div class="container">
+            <div class="text-center" style="max-width: 800px; margin: 0 auto;">
+                <span class="section-subheading">Selected Concept Work</span>
+                <h2 class="section-heading">Strategic Design Demonstrations</h2>
+                <p class="body-text" style="margin: 0 auto; color: var(--text-on-dark);">
+                    Example sites created to demonstrate specific conversion strategies and clinical workflow improvements. These represent the standard delivered for private practices.
+                </p>
+            </div>
+
+            <div class="portfolio-grid">
+                <a href="/dianoya" class="portfolio-card">
+                    <span class="start-badge">Start Here</span>
+                    <div class="card-image" style="background: linear-gradient(135deg, #020B1C, #1E88E5);">
+                        <div class="card-image-inner">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Outer ring only, transparent centre -->
+                                <circle cx="12" cy="12" r="10" fill="none" stroke="#0DD9C4" stroke-width="2" />
+                                <!-- Solid inner circle -->
+                                <circle cx="12" cy="12" r="4" fill="#2E8AFF" />
+                              </svg>
+                        </div>
+                    </div>                    <div class="card-content">
+                        <div class="card-category">Biotech Innovation</div>
+                        <h3 class="card-title">Dianoya Therapeutics</h3>
+                        <p class="card-desc">Explaining complex science for non-technical investors.</p>
+                        
+                        <div class="strategy-note">
+                            <span class="strategy-label">Strategic Rationale</span>
+                            Translating density into clarity to secure investment partnerships.
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/atelier" class="portfolio-card">
+                    <div class="card-image" style="background: linear-gradient(135deg, #2D5F5D, #1A3C3A);">
+                        <div class="card-image-inner" style="font-size: 2.5rem;">🦷</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-category">Cosmetic & Implant Dentistry</div>
+                        <h3 class="card-title">Mayfair Dental Atelier</h3>
+                        <p class="card-desc">High-end medical platform featuring fluid liquid animations and a 'concierge' user flow.</p>
+                        
+                        <div class="strategy-note">
+                            <span class="strategy-label">Strategic Rationale</span>
+                            Offset luxury "editorial" aesthetics with trust-building data matrices to reassure nervous professionals.
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/cambridge-core-clinic" class="portfolio-card">
+                    <div class="card-image" style="background: linear-gradient(135deg, #fff, #f0f0f0);">
+                        <div class="card-image-inner">🏥</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-category">Private Healthcare</div>
+                        <h3 class="card-title">Cambridge Core Clinic</h3>
+                        <p class="card-desc">Restructured GP site with services and booking emphasised.</p>
+                        
+                        <div class="strategy-note">
+                            <span class="strategy-label">Strategic Rationale</span>
+                            Reduced admin friction by surfacing booking availability immediately.
+                        </div>
+                    </div>
+                </a>
+
+
+                <!-- a href="/flourish-wellbeing" class="portfolio-card">
+                    <div class="card-image" style="background: linear-gradient(135deg, #2D5F5D, #1A3C3A);">
+                        <div class="card-image-inner">🌱</div>
+                    </div>                    <div class="card-content">
+                        <div class="card-category">Mental Health</div>
+                        <h3 class="card-title">Flourish Wellbeing</h3>
+                        <p class="card-desc">Organised around patient pathways to reduce anxiety.</p>
+                        
+                        <div class="strategy-note">
+                            <span class="strategy-label">Strategic Rationale</span>
+                            Using calming UI and clear pathways to build trust before contact.
+                        </div>
+                    </div>
+                </a><a href="/cambridge-wellness-hub" class="portfolio-card">
+    <div class="card-image" style="background: linear-gradient(135deg, #1B3B5A, #4A90B8);">
+        <div class="card-image-inner">⚕️</div>
+    </div>
+    <div class="card-content">
+        <div class="card-category">Integrative Medicine</div>
+        <h3 class="card-title">Cambridge Wellness Hub</h3>
+        <p class="card-desc">Integrated healthcare combining conventional medicine with holistic wellness.</p>
         
-        <div class="portfolio-grid">
-            <!-- Dianoya Therapeutics -->
-            <a href="/dianoya" class="portfolio-card">
-                <div class="card-image" style="background: linear-gradient(135deg, #020408, #2E8AFF);">
-                    <div class="card-icon" style="opacity: 0.5;">
-                        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="12" cy="12" r="10" stroke="#0DD9C4" stroke-width="2"/>
-                            <circle cx="12" cy="12" r="4" fill="#2E8AFF"/>
-                        </svg>
+        <div class="strategy-note">
+            <span class="strategy-label">Strategic Rationale</span>
+            Unified disjointed service verticals (clinical & holistic) into a single patient journey to increase cross-referrals.
+        </div>
+    </div>
+</a>
+
+<a href="#" class="portfolio-card" style="opacity: 0.7; pointer-events: none; filter: grayscale(10%);">
+    <div class="card-image" style="background: linear-gradient(135deg, #6B46C1, #9333EA);">
+        <div class="card-image-inner">🧬</div>
+    </div>
+    <div class="card-content">
+        <div class="card-category">Health Tech</div>
+        <h3 class="card-title">Coming Soon</h3>
+        <p class="card-desc">Next-generation healthcare innovations focusing on AI diagnostics.</p>
+        
+        <div class="strategy-note">
+            <span class="strategy-label">In Development</span>
+            Prototyping automated triage flows to reduce administrative bottlenecks in high-volume clinics.
+        </div>
+    </div>
+</a><-->
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section alt-bg">
+        <div class="container">
+            <div class="text-center" style="max-width: 800px; margin: 0 auto;">
+                <span class="section-subheading">Investment</span>
+                <h2 class="section-heading">Q1 2025 Founding Partner Rates</h2>
+                <p class="body-text" style="margin: 0 auto 1rem auto;">
+                    <strong>Early partner pricing:</strong> For Q1 2025 only, fees are set at approximately half of our standard rates to refine the service with a small group of practices in exchange for feedback, testimonials, and referrals.
+                </p>
+                <p class="body-text" style="margin: 0 auto 1rem auto;">
+                    <strong>Value benchmark:</strong> One additional monthly booking through improved digital presence typically covers the site investment within 3–6 months.
+                </p>
+                <p class="body-text" style="font-size: 0.9rem; margin: 0 auto 3rem auto; color: var(--text-light); text-align: center;">
+                    (Typical consultation value: £2,000–£8,000 over time, depending on specialty)
+                </p>
+            </div>
+    
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <span class="tier-tagline">Launch</span>
+                    <h3 class="tier-name">Foundation Practice</h3>
+                    <div class="tier-price">£1,500–£2,500</div>
+                    <p class="tier-desc">For established practices moving from outdated sites to a modern, patient-centred presence.</p>
+    
+                    <ul class="tier-features">
+                        <li>Custom design reflecting your specialty</li>
+                        <li>Mobile-responsive build</li>
+                        <li>Integrated booking matched to workflow</li>
+                        <li>GDPR-compliant forms</li>
+                        <li>Core service page structuring</li>
+                        <li>30 days post-launch support</li>
+                    </ul>
+    
+                    <div class="best-for">
+                        <strong>Best for:</strong> Single-specialty practices with straightforward service offerings.
                     </div>
                 </div>
-                <div class="card-content">
-                    <h3 class="card-title">Dianoya Therapeutics</h3>
-                    <p class="card-tagline">Brain-shuttle biologics platform delivering 40x higher brain exposure for CNS therapeutics</p>
-                    <span class="card-category">Biotech Innovation</span>
+    
+                <div class="pricing-card featured">
+                    <span class="tier-tagline">Scale</span>
+                    <h3 class="tier-name">Clinical Growth</h3>
+                    <div class="tier-price">£2,500–£4,000</div>
+                    <p class="tier-desc">For practices expanding services or patient base, requiring sophisticated conversion pathways.</p>
+    
+                    <ul class="tier-features">
+                        <li><strong>Everything in Foundation, plus:</strong></li>
+                        <li>Multi-service architecture</li>
+                        <li>Advanced booking (calendar sync)</li>
+                        <li>Patient education content strategy</li>
+                        <li>SEO groundwork for local visibility</li>
+                        <li>Custom enquiry flows</li>
+                        <li>60 days post-launch optimisation</li>
+                    </ul>
+    
+                    <div class="best-for">
+                        <strong>Best for:</strong> Multi-clinician practices or clinics adding private services.
+                    </div>
                 </div>
-            </a>
-            <!-- Cambridge Core Clinic -->
-            <a href="/cambridge-core-clinic" class="portfolio-card">
-                <div class="card-image">
-                    <div class="card-icon">🏥</div>
+    
+                <div class="pricing-card">
+                    <span class="tier-tagline">Flagship</span>
+                    <h3 class="tier-name">Premium Practice</h3>
+                    <div class="tier-price">£4,000–£6,000</div>
+                    <p class="tier-desc">For high-end practices where patient experience directly impacts conversion of premium services.</p>
+    
+                    <ul class="tier-features">
+                        <li><strong>Everything in Clinical Growth, plus:</strong></li>
+                        <li>Comprehensive brand alignment</li>
+                        <li>Patient portal / secure docs integration</li>
+                        <li>Video content embedding strategy</li>
+                        <li>A/B testing framework</li>
+                        <li>Multi-language support</li>
+                        <li>Priority support for 6 months</li>
+                    </ul>
+    
+                    <div class="best-for">
+                        <strong>Best for:</strong> Medical aesthetics, Harley Street practices, or international consultants.
+                    </div>
                 </div>
-                <div class="card-content">
-                    <h3 class="card-title">Cambridge Core Clinic</h3>
-                    <p class="card-tagline">Premium private GP services with same-week appointments and personalised care</p>
-                    <span class="card-category">Private Healthcare</span>
-                </div>
-            </a>
-            
-            <!-- Flourish Wellbeing -->
-            <a href="/flourish-wellbeing" class="portfolio-card">
-                <div class="card-image" style="background: linear-gradient(135deg, #2D5F5D, #4A8886);">
-                    <div class="card-icon">🌱</div>
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title">Flourish Wellbeing Practice</h3>
-                    <p class="card-tagline">Research-backed care designed to support your healing, resilience, and authentic wellbeing</p>
-                    <span class="card-category">Mental Health</span>
-                </div>
-            </a>
-            
-            <!-- Cambridge Wellness Hub -->
-            <a href="/cambridge-wellness-hub" class="portfolio-card">
-                <div class="card-image" style="background: linear-gradient(135deg, #1B3B5A, #4A90B8);">
-                    <div class="card-icon">⚕️</div>
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title">Cambridge Wellness Hub</h3>
-                    <p class="card-tagline">Integrated healthcare combining conventional medicine with holistic wellness</p>
-                    <span class="card-category">Integrative Medicine</span>
-                </div>
-            </a>
-            
-            <!-- Placeholder for more sites -->
-            <a href="#" class="portfolio-card" style="opacity: 0.6; pointer-events: none;">
-                <div class="card-image" style="background: linear-gradient(135deg, #6B46C1, #9333EA);">
-                    <div class="card-icon">🧬</div>
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title">Coming Soon</h3>
-                    <p class="card-tagline">More healthcare innovations on the way</p>
-                    <span class="card-category">Health Tech</span>
-                </div>
-            </a>
+            </div>
+    
+            <div class="text-center" style="margin-top: 3rem;">
+                <p class="body-text body-text-center" style="font-weight: 600; color: var(--navy); font-size: 1rem;">
+                    Fixed‑scope, fixed‑fee. No hidden costs or ongoing commitments unless we agree a care plan. Q1 2025 pricing is limited to a small number of founding partner projects and will revert to full rates thereafter.
+                </p>
+            </div>
         </div>
     </section>
-    
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="cambridge-badge">🎓</div>
-            <h3 class="footer-title">Let's Build Something Amazing</h3>
-            <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 1rem;">
-                Joseph Nogbou is a Cambridge University medical student and passionate web designer specialising in sites for healthcare entrepreneurs. With a keen eye for innovation and unmatched skills in sleek, animated UI development, Joseph brings ideas to life online.
-            </p>
-            <a href="mailto:jn461@cam.ac.uk" class="footer-email">jn461@cam.ac.uk</a>
+
+        </div>
+    </section>
+
+    <section class="content-section dark-mode">
+        <div class="container-narrow">
+            <span class="section-subheading">The Difference</span>
+            <h2 class="section-heading">Why Work With Me</h2>
             
-            <div class="social-links">
-                <a href="https://github.com/josephnogbou" class="social-link" target="_blank" rel="noopener">
-                    <span>💻</span>
-                </a>
-                <a href="https://linkedin.com/in/josephnogbou" class="social-link" target="_blank" rel="noopener">
-                    <span>💼</span>
-                </a>
+            <div class="process-row">
+                <div class="process-num">01</div>
+                <div>
+                    <h3>Healthcare Expertise</h3>
+                    <p class="body-text">Cambridge medical background with first-hand experience of NHS and private patient journeys. I design around how your practice actually runs, so patients book faster and staff spend less time chasing.</p>
+                </div>
             </div>
+
+            <div class="process-row">
+                <div class="process-num">02</div>
+                <div>
+                    <h3>Outcome-focused</h3>
+                    <p class="body-text">Design decisions prioritise clarity, patient understanding, and booking pathways over decoration. It’s about ROI, not just aesthetics.</p>
+                </div>
+            </div>
+
+            <div class="process-row">
+                <div class="process-num">03</div>
+                <div>
+                    <h3>Accountability & Continuity</h3>
+                    <p class="body-text">I cap my monthly intake to guarantee long-term support for every client. You work directly with me - ensuring professional accountability and a site that evolves with your practice, not a 'launch and leave' project.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container-narrow">
+            <div style="font-size: 3rem; margin-bottom: 1.5rem;">🎓</div>
+            <h3 style="color: var(--white); margin-bottom: 1.5rem;">About Joseph</h3>
+            <p class="body-text" style="color: rgba(255,255,255,0.6); margin-bottom: 3rem;">
+                I’m Joseph Nogbou, a Cambridge medical background and healthcare web design specialist. I help private GPs, aesthetic clinics, and health-tech teams build credibility and grow.
+            </p>
             
-            <p class="footer-note">
-                © 2025 Joseph Nogbou.<br>
-                Crafted with passion for healthcare innovation.
+            <a href="mailto:jn461@cam.ac.uk" class="btn btn-primary" style="background: var(--white); color: var(--navy-dark); border-color: var(--white); box-shadow: none;">Book a 15-min Consultation</a>
+            
+            <p style="font-size: 0.8rem; color: rgba(255, 255, 255, 0.3); margin-top: 5rem;">
+                © 2025 Joseph Nogbou – Healthcare Web Design | Cambridge, UK
             </p>
         </div>
     </footer>
-    
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.29/dist/lenis.min.js"></script>
+
     <script>
-        // Create floating particles
-        function createParticles() {
-            const container = document.querySelector('.particles-container');
-            if (!container) return;
-            
-            for (let i = 0; i < 50; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 20 + 's';
-                particle.style.animationDuration = (15 + Math.random() * 10) + 's';
-                container.appendChild(particle);
-            }
-        }
+
         
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-        
-        // Intersection Observer for scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-        
+        // Intersection Observer for Animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -678,37 +1002,37 @@
                     entry.target.style.transform = 'translateY(0)';
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1 });
         
-        // Observe portfolio cards
-        document.querySelectorAll('.portfolio-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(50px)';
-            card.style.transition = 'all 0.8s cubic-bezier(0.22, 1, 0.36, 1)';
-            observer.observe(card);
+        // Animate elements
+        document.querySelectorAll('.portfolio-card, .pricing-card, .process-row, .luxury-list li').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.8s cubic-bezier(0.22, 1, 0.36, 1)';
+            observer.observe(el);
         });
-        
-        // Initialize
-        createParticles();
-        
-        // Add parallax effect to scroll indicator
-        const scrollIndicator = document.querySelector('.scroll-indicator');
-        if (scrollIndicator) {
-            scrollIndicator.addEventListener('click', () => {
-                document.querySelector('#portfolio').scrollIntoView({
-                    behavior: 'smooth'
+
+        // [SMART LOGIC] Sticky Button Visibility
+        // Purpose: Ensure sticky button NEVER covers the Hero CTAs on mobile.
+        const stickyWrapper = document.getElementById('stickyWrapper');
+        const heroSection = document.querySelector('.hero');
+
+        if (heroSection && stickyWrapper) {
+            const heroObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        stickyWrapper.classList.add('is-visible');
+                    } else {
+                        stickyWrapper.classList.remove('is-visible');
+                    }
                 });
+            }, { 
+                threshold: 0,       
+                rootMargin: "-100px 0px 0px 0px"
             });
+
+            heroObserver.observe(heroSection);
         }
-        
-        // Hide scroll indicator on scroll
-        window.addEventListener('scroll', () => {
-            if (scrollIndicator && window.scrollY > 100) {
-                scrollIndicator.style.opacity = '0';
-            } else if (scrollIndicator) {
-                scrollIndicator.style.opacity = '1';
-            }
-        });
     </script>
 </body>
 </html>
